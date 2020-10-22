@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 const RestaurantPage = ({route, navigation}) => {
-  const {name, image, address} = route.params;
+  const {name, image, address, city} = route.params;
 
   return (
     <View style={styles.container}>
@@ -25,6 +25,7 @@ const RestaurantPage = ({route, navigation}) => {
         <TouchableOpacity>
           <Text style={styles.restaurantAdress}>{address}</Text>
         </TouchableOpacity>
+        <Text style={styles.restaurantName}>{city}</Text>
       </View>
     </View>
   );

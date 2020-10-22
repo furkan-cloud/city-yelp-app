@@ -48,14 +48,14 @@ const restaurants = [
 const Restaurants = ({route, navigation}) => {
   const {id, name} = route.params;
 
-  const renderRestaurants = ({item}) => {
+  const renderRestaurants = {name} == restaurants.item.city ? ({item}) => {
     return (
       <RestaurantCard
         restaurant={item}
         onClick={() => navigation.navigate('RestaurantPage', item)}
       />
     );
-  };
+  } : null ;
 
   return (
     <SafeAreaView>
