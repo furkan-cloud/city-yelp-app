@@ -79,19 +79,35 @@ const cities = [
 
 // navigation={this.props.navigation}
 
-const CityPage = () => {
-  const renderCities = ({item}) => <CityCard city={item} />;
+const CityPage = ({navigation}) => {
+  const [searchValue, setSearchValue] = useState("");
+  const [displayList, setdisplayList] = useState("");
 
-  const [inputText, setInputText] = useState('');
+
+
+  useEffect(() => {
+    const filteredValue = cities.filter((item) => {
+      const text = searchValue
+    }
+)
+
+  const renderCities = ({item}) => (
+    <CityCard
+      city={item}
+      onClicked={() => navigation.navigate('Restaurants', item)}
+    />
+  );
+
+  // const [inputText, setInputText] = useState('');
 
   return (
     <SafeAreaView>
       <View>
         <Text>Bir sehir seciniz</Text>
         <TextInput
-          value={inputText}
+          value={searchValue}
           placeholder="Bir sehir arayin.."
-          onChangeText={(searchText) => setInputText(searchText)}
+          onChangeText={(searchText) => setSearchValue(searchText)}
         />
         <FlatList data={cities} renderItem={renderCities} />
       </View>
