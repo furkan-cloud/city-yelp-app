@@ -14,18 +14,24 @@ const RestaurantPage = ({route, navigation}) => {
   return (
     <View style={styles.container}>
       <Image style={styles.img} source={{uri: image}} />
-      <View style={{margin: 20}}>
-        <Text style={styles.restaurantName}>{name}</Text>
-        <TouchableOpacity>
-          <Text style={styles.restaurantAdress}>{address}</Text>
+      <View style={styles.address}>
+        <View style={{margin: 20}}>
+          <Text style={styles.restaurantName}>{name}</Text>
+          <TouchableOpacity style={styles.restaurantDetails}>
+            <Text style={styles.restaurantAdress}>{address}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.restaurantDetails}>
+            <Text style={styles.restaurantAdress}>{address}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.restaurantDetails}>
+            <Text style={styles.restaurantAdress}>{address}</Text>
+          </TouchableOpacity>
+
+          {/* <Text style={styles.restaurantName}>{city}</Text> */}
+        </View>
+        <TouchableOpacity style={styles.reservationButton}>
+          <Text style={styles.reservation}>Rezervasyon Yaptır</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.restaurantAdress}>{address}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.restaurantAdress}>{address}</Text>
-        </TouchableOpacity>
-        <Text style={styles.restaurantName}>{city}</Text>
       </View>
     </View>
   );
@@ -34,6 +40,15 @@ const RestaurantPage = ({route, navigation}) => {
 export default RestaurantPage;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+
+  address: {
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+
   img: {
     alignSelf: 'center',
     width: Dimensions.get('window').width * 0.9,
@@ -42,6 +57,25 @@ const styles = StyleSheet.create({
   restaurantName: {
     fontSize: 20,
     fontWeight: 'bold',
+    borderBottomWidth: 1,
+    borderBottomColor: '#e2e2e2',
+    marginBottom: 5,
   },
-  restaurantAdress: {},
+  restaurantAdress: {
+    backgroundColor: '#1d8ae5',
+    margin: 3,
+    color: 'white',
+    padding: 10,
+    fontSize: 18,
+    borderRadius: 10,
+  },
+  reservationButton: {
+    // alignSelf: 'center',
+  },
+  reservation: {
+    color: '#3f729f',
+    textAlign: 'center',
+    fontSize: 20,
+    marginBottom: 15,
+  },
 });
