@@ -17,10 +17,12 @@ function Router() {
         <NavigationContainer>
             <Stack.Navigator
                 screenOptions={{
-                    gestureEnabled: true
+                    gestureEnabled: true,
+                    // headerShown: false
                 }}
             >
                 <Stack.Screen
+                    options = {{title:'CITIES'}}
                     name="CityPage"
                     component={CityPage}
                 />

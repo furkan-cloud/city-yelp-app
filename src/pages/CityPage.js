@@ -5,7 +5,7 @@ import {
   Text,
   FlatList,
   TextInput,
-  TouchableOpacity,
+  StyleSheet,
 } from 'react-native';
 
 import CityCard from '../components/CityCard';
@@ -77,24 +77,22 @@ const cities = [
   },
 ];
 
-// navigation={this.props.navigation}
-
 const CityPage = ({navigation}) => {
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
   const [displayList, setDisplayList] = useState([]);
 
-useEffect(() => {
-  setDisplayList(cities)
-}, [])
-
+  useEffect(() => {
+    setDisplayList(cities);
+  }, []);
 
   useEffect(() => {
-    const filteredValue = cities.filter(item => {
+    const filteredValue = cities.filter((item) => {
       const text = searchValue.toUpperCase();
       const cityName = item.name.toUpperCase();
       return cityName.indexOf(text) > -1;
-    }); setDisplayList(filteredValue);
-  },[searchValue])
+    });
+    setDisplayList(filteredValue);
+  }, [searchValue]);
 
   const renderCities = ({item}) => (
     <CityCard
@@ -103,21 +101,30 @@ useEffect(() => {
     />
   );
 
-  // const [inputText, setInputText] = useState('');
-
   return (
     <SafeAreaView>
       <View>
-        <Text>Bir sehir seciniz</Text>
         <TextInput
+          style={styles.inputText}
           value={searchValue}
-          placeholder="Bir sehir arayin.."
+          placeholder="Search a city.."
           onChangeText={(searchText) => setSearchValue(searchText)}
         />
-        <FlatList data={displayList} renderItem={renderCities} />
+        <FlatList
+          keyExtractor={(item, index) => index.toString()}
+          data={displayList}
+          renderItem={renderCities}
+        />
       </View>
     </SafeAreaView>
   );
 };
 
 export default CityPage;
+
+const styles = StyleSheet.create({
+  inputText: {
+    marginLeft: 10,
+    fontSize: 20,
+  },
+});
